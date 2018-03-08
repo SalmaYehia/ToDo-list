@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en" onmousemove="draw_or_not()">
+    <head>
+        <title>Salma_Nada</title>
+        <link rel="stylesheet" href="jquery-ui.css" />
+        <script src="jquery.js"></script>
+        <script src="jquery-1.9.1.js"></script>
+        <script src="jquery-ui.js"></script>
+         <script src="jquery.datetimepicker.min.js"></script>
+
+        <script src="jquery.datetimepicker.js"></script>
+
+         <script type="text/javascript" src="js_phase1.js">"use strict";</script>
+        <script type="text/javascript" src="pro.js">"use strict";</script>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <script src="js/bootstrap.min.js"></script>
+
+         <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="jquery.datetimepicker.css">
+        <link rel="stylesheet" type="text/css" href="Style.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+       <script>
+        $(function(){
+           $("#datepicker").datepicker();
+
+        });
+        $(function(){
+           $("#edatepicker").datepicker();
+
+        });
+
+        $(document).ready(function () {
+            $(document).on('mouseenter', '#divbutton', function () {
+                      $(this).css("background-color", "#F8F8F8");
+                $(this).find("#button1").show();
+            }).on('mouseleave', '#divbutton', function () {
+                      $(this).css("background-color", "white" );
+                $(this).find("#button1").hide();
+            });
+        });
+
+
+
+      </script>
+
+    </head>
+    <body onload="all_tasks.drawtable('All Tasks')">
+      <div class="container">
+        <div class = "navbar">
+            <h2><b>My Tasks</b></h2>
+            <nav><br><br>
+              <span onclick='all_tasks.drawtable("All Tasks");return false'><button id="at" class="btn btn-primary btn-block" type="button">
+                  All Tasks  <span id="bad1" class="badge">0</span> </button></span>
+                        <br>
+              <span onclick='all_tasks.drawtable("In progress");return false'><button id="inp" class="btn btn-primary btn-block" type="button">
+              In Progress  <span id="bad2" class="badge">0</span> </button></span>
+                        <br>
+               <span onclick='all_tasks.drawtable("Completed Tasks");return false'><button id="ct" class="btn btn-primary btn-block" type="button">
+              Completed Tasks  <span id="bad3" class="badge">0</span> </button></span>
+                        <br>
+              <span onclick='all_tasks.drawtable("Archived");return false'><button id="arc" class="btn btn-primary btn-block" type="button">
+              Archived  <span id="bad4" class="badge">0</span> </button></span>
+                <br>
+                <button onclick="location.href = 'http://localhost:8888/';" id="log-out" class="btn btn-default btn-block" type="button">
+              Log out  </button>
+
+            </nav>
+        </div>
+
+        <div id = "c1" class="container">
+              <div class="row">
+                  <div class = "col-lg-9 col-xs-6 col-lg-push-3 col-xs-push-3 ">
+                    <b><h2 id="title">All Tasks</h2></b>
+                      <div id="set" class="dropdown">
+                      <button  class="btn btn-warning dropdown-toggle"  type="button" data-toggle="dropdown">
+                      <span class="glyphicon glyphicon-cog"></span></button>
+                      <ul class="dropdown-menu">
+                        <li><a onClick="document.getElementById('add1').style.display='none';all_tasks.mark_all()"  href="#">Select all</a></li>
+                        <li><a onClick="document.getElementById('add1').style.display='block';all_tasks.unmark_all()"  href="#">Unselect all</a></li>
+                        <li><a onClick="all_tasks.change_sorting('Name')" href="#">Sort by name</a></li>
+                          <li><a onClick="all_tasks.change_sorting('Date')" href="#">Sort by date</a></li>
+                      </ul>
+                    </div>
+  <table id="All" class="table table-condensed">
+    <thead>
+      <tr>
+
+        <th>Task</th>
+          <th>date</th>
+          <th></th>
+      </tr>
+    </thead>
+    <tbody id="table_body">
+    </tbody>
+  </table>
+                       <button id="add1" type="button" class="btn btn-default" onclick="addone()"><b>Add +</b></button>
+
+                      <div id="add11" class="container" style="display:none">
+                           <div class="row">
+                  <div class = "col-lg-9 col-xs-6">
+                           <form role="form" class="forms">
+                          <div class="form-group">
+                              <label for="task name">Task:</label>
+                            <input class="form-control" id="newname" >
+                            <label for="task description">Description:</label>
+                            <input class="form-control" id="newtask" >
+                          </div>
+                               <label for="the due date">Due date:</label>
+                            <input id="datepicker" type='text' class="form-control " />
+                               <button id="add111" onclick="all_tasks.add_task()" type="button" class="btn btn-danger">Add+</button>
+                               <button id="cancel" type="button" class="btn btn-default" onclick="addonee()">Cancel</button>
+                        </form>
+                               </div>
+                                </div>
+                      </div>
+
+                      <div id="Edit11" class="container" style="display:none">
+                           <div class="row">
+                  <div class = "col-lg-9 col-xs-6">
+                           <form role="form" class="forms">
+                          <div class="form-group">
+                              <label for="task name">Task:</label>
+                            <input class="form-control" id="enewname" >
+                            <label for="task description">Description:</label>
+                            <input class="form-control" id="enewtask" >
+                          </div>
+                               <label for="the due date">Due date:</label>
+                            <input id="edatepicker" type='text' class="form-control " />
+                                <button id ="edit" onclick="all_tasks.edit_task()" type="button" class="btn btn-success">Edit</button>
+                               <button id="cancel" type="button" class="btn btn-default" onclick="editonee()">Cancel</button>
+                        </form>
+                               </div>
+                                </div>
+                      </div>
+                      <button  class="btn btn-default" onclick=" document.getElementById('add1').style.display='block'; all_tasks.delete_all()" style='display:none' id="trying" type="button"><b>Delete Marked</b></button>
+
+
+
+        </div>
+      </div>
+</div>
+</div>
+
+    </body>
+</html>

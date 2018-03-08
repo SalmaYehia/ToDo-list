@@ -1,0 +1,77 @@
+
+.navbar{
+    
+    position: absolute;
+    background-color: #00b0ff;
+    height: 100%;
+    width: 20%;
+    
+}
+.navbar h2{
+     text-align: center;
+    padding: 3%;
+    text-decoration: none;
+    font-family: monospace;
+    color: black;
+}
+
+td{
+    width: 30%;
+}
+
+h2{
+    
+    font-family:sans-serif;
+    color: crimson;
+}
+
+#add11{
+    
+    background-color: #e3f2fd;
+    width: 100%;
+    
+    
+} 
+#Edit11
+{
+     background-color: #e3f2fd;
+    width: 100%;
+}
+#newtask,#enewtask
+{
+    width: 130%;
+}
+#newname,#enewname
+{
+     width: 50%;
+}
+#datepicker,#edatepicker
+{
+    width: 30%;
+    position: relative;
+    left: 10%;
+    
+}
+#cancel {
+    
+    position: relative;
+    left: 100%;
+    bottom: 10px;
+}
+#add111{
+    
+    position: relative;
+    left: 100%;
+     bottom: 10px;
+}
+#edit{
+    
+    position: relative;
+    left: 100%;
+     bottom: 10px;
+    
+}
+#set{
+    position: relative;
+    left: 90%;
+}
